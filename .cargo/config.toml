@@ -1,2 +1,2 @@
 [alias]
-dev = "watch -x 'run -p app'"
+dev = ["watch", "-x", "run -p app"]

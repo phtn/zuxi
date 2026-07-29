@@ -354,6 +354,39 @@ accents such as focus and quote markers.
 
 Entries are newest first.
 
+### 2026-07-30 — Fixed the `cargo dev` watch alias
+
+**Outcome:** `cargo dev` now starts `cargo-watch` with `run -p app` as one
+complete command argument.
+
+**Files:**
+
+- `.cargo/config.toml`
+
+**Observed symptom:**
+
+```text
+unexpected EOF while looking for matching `''
+syntax error: unexpected end of file
+```
+
+**Root cause:** The string-form Cargo alias contained shell-style single quotes.
+Cargo's alias expansion passed those quotes through in a form that caused
+`cargo-watch` to invoke the malformed command `cargo 'run`.
+
+**Fix:** Use Cargo's argument-array form:
+
+```toml
+dev = ["watch", "-x", "run -p app"]
+```
+
+**GPUI lesson:** This was outside GPUI itself. When the application never
+reaches compilation or startup, debug the command runner before investigating
+window or entity lifecycle code.
+
+**Verification:** Started `cargo dev`, confirmed that `cargo-watch` invoked
+`cargo run -p app`, and stopped the watcher cleanly.
+
 ### 2026-07-30 — Added this development and learning log
 
 **Outcome:** Added a durable place to review project changes and learn the GPUI

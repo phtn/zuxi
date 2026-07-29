@@ -25,6 +25,18 @@ pub mod color {
     pub const RED_500: u32 = 0xff453a;
     pub const RED_600: u32 = 0xff3b30;
     pub const RED_700: u32 = 0xd70015;
+
+    pub const SNOW_A: u32 = 0x001D51;
+    pub const SNOW_B: u32 = 0xFFE3A5;
+
+    pub const ARC_A: u32 = 0xF9D74A;
+    pub const ARC_B: u32 = 0x1E1E1C;
+
+    pub const D350: u32 = 0xC3D8C5;
+    pub const D351: u32 = 0xFAFAFA;
+    pub const D352: u32 = 0x51504F;
+    pub const D353: u32 = 0xA8C0B2;
+    pub const D354: u32 = 0xFF7247;
 }
 
 pub mod spacing {
@@ -38,6 +50,7 @@ pub mod spacing {
 }
 
 pub mod typography {
+    pub const SIZE_XS: f32 = 10.0;
     pub const SIZE_SM: f32 = 13.0;
     pub const SIZE_BODY: f32 = 15.0;
     pub const SIZE_HEADING: f32 = 24.0;
@@ -46,6 +59,8 @@ pub mod typography {
     pub const LINE_HEIGHT_BODY: f32 = 22.0;
     pub const LINE_HEIGHT_HEADING: f32 = 30.0;
 
+    pub const WEIGHT_THIN: f32 = 300.0;
+    pub const WEIGHT_LIGHT: f32 = 300.0;
     pub const WEIGHT_REGULAR: f32 = 400.0;
     pub const WEIGHT_MEDIUM: f32 = 500.0;
     pub const WEIGHT_SEMIBOLD: f32 = 600.0;

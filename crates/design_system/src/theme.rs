@@ -44,13 +44,14 @@ impl Theme {
         Self {
             mode: ThemeMode::Light,
             colors: ThemeColors {
-                background: rgb(color::NEUTRAL_50),
-                surface: rgb(color::WHITE),
-                surface_elevated: rgb(color::NEUTRAL_100),
-                text_primary: rgb(color::NEUTRAL_900),
-                text_muted: rgb(color::NEUTRAL_600),
+                background: rgb(color::D351),
+                surface: rgb(color::D350),
+                surface_elevated: rgb(color::D354),
+                text_primary: rgb(color::D352),
+                text_muted: rgb(color::D352),
                 border: rgb(color::NEUTRAL_200),
-                accent: rgb(color::BLUE_600),
+                // accent: rgb(color::BLUE_600),
+                accent: rgb(color::SNOW_A),
                 accent_hover: rgb(color::BLUE_700),
                 on_accent: rgb(color::WHITE),
                 danger: rgb(color::RED_600),
@@ -65,7 +66,7 @@ impl Theme {
         Self {
             mode: ThemeMode::Dark,
             colors: ThemeColors {
-                background: rgb(color::DARK_BACKGROUND),
+                background: rgb(color::D352),
                 surface: rgb(color::NEUTRAL_900),
                 surface_elevated: rgb(color::NEUTRAL_800),
                 text_primary: rgb(color::NEUTRAL_50),

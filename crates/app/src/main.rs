@@ -106,7 +106,7 @@ impl RootView {
                     .gap(px(tokens::spacing::XS))
                     .px(px(tokens::spacing::XS))
                     .py(px(tokens::spacing::XXS))
-                    .rounded(px(tokens::radius::MD))
+                    // .rounded(px(tokens::radius::MD))
                     .bg(item_background)
                     .cursor_pointer()
                     .hover(move |style| style.bg(colors.surface_elevated))
@@ -116,11 +116,12 @@ impl RootView {
                     .child(
                         div()
                             .flex_none()
-                            .w(px(32.0))
-                            .rounded(px(tokens::radius::SM))
+                            .w(px(28.0))
+                            .h(px(24.0))
+                            // .rounded(px(tokens::radius::SM))
                             .bg(colors.background)
                             .text_center()
-                            .text_size(px(10.0))
+                            .text_size(px(12.0))
                             .font_weight(FontWeight(tokens::typography::WEIGHT_SEMIBOLD))
                             .text_color(colors.text_muted)
                             .child(entry.kind.label()),
@@ -141,12 +142,14 @@ impl RootView {
                                         tokens::typography::WEIGHT_REGULAR
                                     }))
                                     .text_color(colors.text_primary)
+                                    .hidden()
                                     .child(title),
                             )
                             .child(
                                 div()
                                     .truncate()
-                                    .text_size(px(tokens::typography::SIZE_SM))
+                                    .font_weight(FontWeight(tokens::typography::WEIGHT_THIN))
+                                    .text_size(px(tokens::typography::SIZE_XS))
                                     .text_color(colors.text_muted)
                                     .child(file_name),
                             ),
@@ -160,36 +163,33 @@ impl RootView {
             .flex_col()
             .w(px(SIDEBAR_WIDTH))
             .h_full()
-            .border_r_1()
+            // .border_r_1()
             .border_color(colors.border)
             .bg(colors.surface)
             .child(
                 div()
+                    .h(px(50.0))
+                    .flex()
+                    .flex_row()
+                    .items_center()
+                    .justify_between()
                     .px(px(tokens::spacing::SM))
                     .py(px(tokens::spacing::SM))
                     .border_b_1()
                     .border_color(colors.border)
                     .child(
                         div()
-                            .text_size(px(20.0))
+                            .text_size(px(16.0))
                             .font_weight(FontWeight(tokens::typography::WEIGHT_SEMIBOLD))
                             .text_color(colors.text_primary)
-                            .child("Library"),
+                            .child("ZX"),
                     )
                     .child(
                         div()
-                            .mt(px(tokens::spacing::XXS))
-                            .truncate()
-                            .text_size(px(tokens::typography::SIZE_SM))
+                            .text_size(px(16.0))
+                            .font_weight(FontWeight(tokens::typography::WEIGHT_SEMIBOLD))
                             .text_color(colors.text_muted)
-                            .child(root_name),
-                    )
-                    .child(
-                        div()
-                            .mt(px(tokens::spacing::XS))
-                            .text_size(px(tokens::typography::SIZE_SM))
-                            .text_color(colors.text_muted)
-                            .child(format!("{} documents", self.documents.len())),
+                            .child(format!("{}", self.documents.len())),
                     ),
             )
             .child(
@@ -197,8 +197,9 @@ impl RootView {
                     .id("document-list")
                     .flex_1()
                     .min_h_0()
+                    .gap_y_2()
                     .overflow_y_scroll()
-                    .p(px(tokens::spacing::XXS))
+                    // .p(px(tokens::spacing::SM))
                     .children(items),
             )
             .into_any_element()
@@ -221,7 +222,7 @@ impl RootView {
 
         div()
             .flex_none()
-            .h(px(56.0))
+            .h(px(50.0))
             .flex()
             .items_center()
             .gap(px(tokens::spacing::XS))
@@ -232,7 +233,8 @@ impl RootView {
             .child(
                 div()
                     .px(px(tokens::spacing::XS))
-                    .rounded(px(tokens::radius::SM))
+                    .py(px(tokens::spacing::XS))
+                    // .rounded(px(tokens::radius::SM))
                     .bg(colors.surface_elevated)
                     .text_color(colors.text_muted)
                     .text_size(px(tokens::typography::SIZE_SM))
@@ -244,7 +246,8 @@ impl RootView {
                     .min_w_0()
                     .flex_1()
                     .flex()
-                    .flex_col()
+                    .flex_row()
+                    .gap_4()
                     .child(
                         div()
                             .truncate()
@@ -262,7 +265,7 @@ impl RootView {
             )
             .child(
                 Button::new("reload-library", "Reload", self.theme.clone())
-                    .variant(ButtonVariant::Secondary)
+                    .variant(ButtonVariant::Danger)
                     .on_click(cx.listener(|this, _, _, cx| this.reload(cx))),
             )
             .child(
@@ -395,6 +398,7 @@ impl RootView {
                             .mb(px(tokens::spacing::XS))
                             .text_size(px(tokens::typography::SIZE_SM))
                             .text_color(colors.text_muted)
+                            .absolute()
                             .child(format!("Page {}", index + 1)),
                     )
                     .child(
@@ -425,8 +429,8 @@ impl RootView {
                     .flex()
                     .flex_col()
                     .items_center()
-                    .px(px(tokens::spacing::MD))
-                    .py(px(tokens::spacing::SM))
+                    // .px(px(tokens::spacing::MD))
+                    // .py(px(tokens::spacing::SM))
                     .children(pages)
                     .when(truncated, |element| {
                         element.child(
