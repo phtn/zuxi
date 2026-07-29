@@ -1,0 +1,13 @@
+[workspace]
+members = ["crates/design_system", "crates/app"]
+resolver = "2"
+
+[workspace.package]
+version = "0.1.0"
+edition = "2024"
+license = "MIT OR Apache-2.0"
+
+[workspace.dependencies]
+gpui = { git = "https://github.com/zed-industries/zed", rev = "06b6160d46ae8a9074cd367ed64f742b47beca64" }
+# Without this feature, GPUI's macOS platform installs a no-op text renderer.
+gpui_platform = { git = "https://github.com/zed-industries/zed", rev = "06b6160d46ae8a9074cd367ed64f742b47beca64", features = ["font-kit"] }
